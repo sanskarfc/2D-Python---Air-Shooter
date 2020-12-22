@@ -4,7 +4,10 @@ import pygame
 #importing random module
 import random
 
-# Import pygame.locals to access key strokes
+#importing time library to have time survived as the score
+import time
+
+#import pygame.locals to access keypresses
 from pygame.locals import (
     RLEACCEL,
     K_UP,
@@ -16,21 +19,21 @@ from pygame.locals import (
     QUIT,
 )
 
-#screen height and screen width
+#setting up screen height and screen width
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
 
-# Define the Player object extending pygame.sprite.Sprite
-# Instead of a surface, we use an image for a better looking sprite
+#defining the Player object extending pygame.sprite.Sprite
+#instead of a surface, we use an image
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.image.load(r"Fly.png").convert_alpha()
+        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\fly.png").convert_alpha()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect()
 
-    #by these, we can move the sprite up,down,left and right by 5 units
+    #by these, we can move the sprite up,down,left and right by 5 units by each key press
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
             self.rect.move_ip(0, -5)
@@ -57,7 +60,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.image.load(r"torpedo.png").convert_alpha()
+        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\torpedo.png").convert_alpha()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         # The starting position is randomly generated, as is the speed
         self.rect = self.surf.get_rect(
@@ -85,14 +88,14 @@ class Enemy(pygame.sprite.Sprite):
             self.kill()
 
 
-# Define the cloud object extending pygame.sprite.Sprite
+#defining the cloud object
 # Use an image for a better looking sprite
 class Cloud(pygame.sprite.Sprite):
     def __init__(self):
         super(Cloud, self).__init__()
-        self.surf = pygame.image.load(r"cloud.png").convert()
+        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\cloud.png").convert()
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
-        # The starting position is randomly generated
+        #the starting position of the cloud is randomly generated using the random function
         self.rect = self.surf.get_rect(
             center=(
                 random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
@@ -100,8 +103,8 @@ class Cloud(pygame.sprite.Sprite):
             )
         )
 
-    # Move the cloud based on a constant speed
-    # Remove it when it passes the left edge of the screen
+    #moving the cloud at a constant speed
+    #removing it when it passes the left edge of the screen
     def update(self):
         self.rect.move_ip(-5, 0)
         if self.rect.right < 0:
@@ -127,6 +130,17 @@ if(difficultyy=='H'):
 # Setup the clock for a decent framerate(had this idea from the internet)
 clock = pygame.time.Clock()
 
+start_time=time.time()
+end_time=time.time()
+
+font_time = pygame.font.SysFont(('Comic Sans MS'), 32)
+
+def timer(x,y):
+    font_times= font_time.render("TIME:"+str(int(end_time-start_time)),True,(0,0,0))
+    screen.blit(font_times, (x,y))
+
+
+
 # Create the screen object
 # The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -150,13 +164,14 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
 #Background
-background=pygame.image.load(r"bg.png").convert()
+background=pygame.image.load(r"C:\Users\sansk\Desktop\bg.png").convert()
 
 #Variable to keep our main loop running
 running = True
 
 #Our main loop
 while running:
+    end_time=time.time()
     # Look at every event in the queue
     for event in pygame.event.get():
         #User hit the key
@@ -207,6 +222,8 @@ while running:
 
         # Stop the loop
         running = False
+
+    timer(660,0)
 
     # Flip everything to the display
     pygame.display.flip()
