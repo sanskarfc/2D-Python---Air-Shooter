@@ -150,7 +150,7 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
 #Background
-background=pygame.image.load(r"C:\Users\sansk\Desktop\bg.png").convert()
+background=pygame.image.load(r"bg.png").convert()
 
 #Variable to keep our main loop running
 running = True
