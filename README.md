@@ -16,3 +16,7 @@ For the game to work, we need to install pygame by running:
 pip install pygame
 
 in the command prompt in a windows machine
+
+When I used the images for the project, I had to specifiy the path on my machine. 
+
+for eg: (r'C:\Users\sansk\Desktop\Fly.png')
