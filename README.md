@@ -9,3 +9,9 @@ I made this project as a part of course work under ES102.
 For the project, I made a game using the pygame library
 
 The images are copyright free and are downloaded from flaticon.com. 
+
+For the game to work, we need to install pygame by running:
+
+pip install pygame
+
+in the command prompt in a windows machine
