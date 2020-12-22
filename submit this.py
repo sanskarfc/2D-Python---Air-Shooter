@@ -29,7 +29,7 @@ SCREEN_HEIGHT = 600
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\fly.png").convert_alpha()
+        self.surf = pygame.image.load(r"Fly.png").convert_alpha()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect()
 
@@ -60,7 +60,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super(Enemy, self).__init__()
-        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\torpedo.png").convert_alpha()
+        self.surf = pygame.image.load(r"torpedo.png").convert_alpha()
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         # The starting position is randomly generated, as is the speed
         self.rect = self.surf.get_rect(
@@ -93,7 +93,7 @@ class Enemy(pygame.sprite.Sprite):
 class Cloud(pygame.sprite.Sprite):
     def __init__(self):
         super(Cloud, self).__init__()
-        self.surf = pygame.image.load(r"C:\Users\sansk\Desktop\cloud.png").convert()
+        self.surf = pygame.image.load(r"cloud.png").convert()
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         #the starting position of the cloud is randomly generated using the random function
         self.rect = self.surf.get_rect(
@@ -164,7 +164,7 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
 #Background
-background=pygame.image.load(r"C:\Users\sansk\Desktop\bg.png").convert()
+background=pygame.image.load(r"bg.png").convert()
 
 #Variable to keep our main loop running
 running = True
