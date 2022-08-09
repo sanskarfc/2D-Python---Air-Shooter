@@ -13,7 +13,7 @@ The images are copyright free and are downloaded from flaticon.com.
 
 For the game to work, we need to install pygame by running:
 
-pip install pygame
+```pip install pygame```
 
 in the command prompt in a windows machine
 
